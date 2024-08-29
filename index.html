@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js'></script>
+  <script  src="scripts/script.js"></script>
+
+  <title>Monsters University</title>
+</head>
+
+<body>
+  <!-- Header Bar  -->
+  <nav class="navbar navbar-expand-lg bg-white navbar-light fixed-top">
+    <div class="container">
+        <img src="https://i0.wp.com/www.purplarscholarship.com/wp-content/uploads/2023/03/image.png?resize=497%2C498&ssl=1" alt="Profile Pic" class="rounded-circle" id="pic1">
+        <h3 style="color: black;">Monsters University</h3>
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="navitem">
+            <button id="btnLoadData" class="btn btn-secondary">Load Example</button>
+            </li>
+          </ul>
+        </div>
+    </div>
+    </nav>
+
+  <!-- Sign Up Portion -->
+  <section class="container mt-5">
+  <br>
+    <img src="https://i.pinimg.com/736x/77/a7/dc/77a7dc9206518e87c4ec602c68d082ec.jpg" class="card-img-top" alt="Campus Img">
+    <div class="image-text">
+      <h1 style="font-size: 55px;">Monsters University</h1>
+      <p style="font-size: 40px;">Be you at MU.</p>
+    </div>
+
+  <!-- Enrolling Information -->
+        <div class="center">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Become an MU student today!</h5>
+              <p class="card-text">At Monsters University, you will learn the difference between being a monster and behaving monstrously. You will have the opportunity to be a part of a family atmosphere where students, faculty, and staff build on one another to become better monsters. So, join our students on your journey to become the best monster you can be! 
+                  <br><br> Create your portal account below, so that you can start the enrollment process for the Fall semester.  
+              </p>
+            </div>
+          </div>
+        </div>
+    
+    <!-- Enrolling Information -->
+        <div class="center">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">MU Portal Account</h5>
+              <form>
+ <!--  Email   -->
+                  <div class="mb-3 mt-3">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                    <p class="card-footer"></p>
+                  </div>
+ <!--  Password   -->
+                  <div class="mb-3">
+                    <label for="pwd" class="form-label">Password:</label>
+                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+                    <p class="card-footer"></p>
+                  </div>
+ <!--  Name   -->
+                  <div class="mb-3 mt-3">
+                    <label for="name" class="form-label">Name:</label>
+                    <input type="name" class="form-control" id="firstName" placeholder="First name" name="username">
+                    <input type="name" class="form-control" id="lastName" placeholder="Last name" name="username">
+                    <p class="card-footer"></p>
+                  </div>
+ <!--  Semester   -->
+                  <p> Please select what semester you are interested in applying for: </p>
+                  <select id="termSelect" class="form-select" aria-label="Default select example">
+                    <option value="" disabled selected>Select your semester</option>
+                    <option>Fall 2024</option>
+                    <option>Spring 2025</option>
+                    <option>Summer 2025</option>
+                  </select>
+                  <br>
+ <!--  Student Type   -->
+                  <p> Please select what type of student you will be: </p>
+                  <div class="form-check">
+                    <input type="radio" class="form-check-input" id="freshman" name="optradio" value="Freshman">Freshman
+                    <label class="form-check-label" for="radio1"></label>
+                  </div>
+                  <div class="form-check">
+                    <input type="radio" class="form-check-input" id="transfer" name="optradio" value="Transfer">Transfer
+                    <label class="form-check-label" for="radio2"></label>
+                  </div>
+                  <div class="form-check">
+                    <input type="radio" class="form-check-input" id="international" name="optradio" value="International">International
+                    <label class="form-check-label" for="radio3"></label>
+                  </div>
+                  <br>
+ <!--  Activity   -->
+                  <p> Please select what activities you are interested in on campus: </p>
+                  <label for="activitySelect" class="form-label">Activities</label>
+                  <select id="activitySelect" class="form-select" type="select" name="optionsSelect">
+                    <option value="" disabled selected>Select your activity</option>
+                    <option>Fraternity & Sorority Life</option>
+                    <option>Athletics</option>
+                  </select>
+                  <br>
+                  <label for="optionsSelect" class="form-label">Organizations & Options</label>
+                  <select id="optionsSelect" class="form-select" type="select" name="optionsSelect" disabled>
+                    <option>Select your activity first</option>
+                  </select>
+                  <br>
+ <!--  Submit Submit Submit   -->
+                  <button id="submitButton" class="btn btn-primary" type="submit">Submit</button>
+              </form>
+      <br>
+      <p id="userGreeting" style="text-align:center"></p>
+              </div>
+          </div>
+        </div>
+  </section>
+</body>
+
+<!-- Footer Bar -->
+<footer class="text-center text-lg-start bg-light text-muted">
+    <hr>
+      <div class="container text-center text-md-start mt-5">
+        <div class="row mt-3">
+          <!-- Lab -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+            <h6 class="text-uppercase fw-bold mb-4"> Lab</h6>
+            <p>
+<!--               <i class="bi bi-arrow-right"></i> -->
+              <a href="https://github.com/mmandelyn/india.hotel.inc/tree/main" target="_blank" class="text-reset">India / Hotel Repo</a>
+            </p>
+          </div>
+          <!-- Links -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+            <h6 class="text-uppercase fw-bold mb-4"> Tour Our Campus </h6>
+            <p>
+<!--               <i class="bi bi-arrow-right"></i> -->
+              (p) 123-456-7890 <br>
+<!--               <i class="bi bi-arrow-right"></i> -->
+              (c) 012-345-6789
+            </p>
+          </div>
+          <!-- Contacts-->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+            <h6 class="text-uppercase fw-bold mb-4"> Enrollment Coordinator </h6>
+            <p> Mandy McGinnis <br>
+<!--               <i class="bi bi-arrow-right"></i> -->
+              mmcginnis1@una.edu 
+            </p>
+          </div>
+        </div>
+      </div>
+  </footer>
+
+
+</html>
