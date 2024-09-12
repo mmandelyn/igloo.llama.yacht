@@ -5,7 +5,7 @@ const app = express()
 app.set('view engine', 'ejs')
 app.use(express.static('./public/'))
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = process.env.uri;
+const uri = process.env.uri; 
 
 console.log(uri);
 
@@ -66,5 +66,47 @@ app.get('/ejs', (res,req)=>{
   //can you get content from client to console?
 })
 
+app.get('/read', async(req,res)=>{
+  console.log('in /read');
+  await client.connect();
 
+  console.log('connected?');
+  //send a ping to confirm a succesful connection
+  
+  let result = await client.db("mandys-db").collection("whatever-collection").find({}).toArray();
+  console.log(result);
+
+  res.render('mongo', {
+    mongoResult: result });
+  })
+
+app.get('/insert', async(req,res)=>{
+  console.log('in /insert');
+  //connect to db,
+  await client.connect();
+  //
+  await client.db("mandys-db").collection("whatever-collection").insertOne({post: 'hardcoded post insert'});
+
+  //insert into it
+  res.render('insert');
+})
+
+app.post('/update', async(req,res)=> {
+
+  console.log('in /update');
+
+  let result = await client.db("mandys-db").collection("whatever-collection")
+      .find({}).toArray();
+
+  //connect to db,
+  await client.connect();
+  //
+  await client.db("mandys-db").collection("whatever-collection").findOneAndUpdate(
+    { "post" : "another day " },
+    { $set: {"post": "the next other day" }}
+  );
+  //insert into it
+  res.render('update',  {postData: result});
+
+})
 app.listen(5000)
