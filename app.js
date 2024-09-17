@@ -2,10 +2,15 @@ console.log('I am on a node server');
 require('dotenv').config()
 const express = require('express')
 const app = express()
-app.set('view engine', 'ejs')
-app.use(express.static('./public/'))
+const bodyParser = require('body-parser')
+const { urlencoded } = require('body-parser')
+const { ObjectId } = require('mongodb')
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = process.env.uri; 
+
+app.set('view engine', 'ejs')
+app.use(express.static('./public/'))
+app.use(bodyParser.urlencoded({ extended: true }))
 
 console.log(uri);
 
@@ -33,26 +38,6 @@ async function run() {
 }
 run().catch(console.dir);
 
-// function whateverNameOfIt (Params) {}
-// whatever(()=>{})
-
-app.get('/mongo', async (req,res)=>{
-    console.log("in /mongo");
-    await client.connect();
-    console.log("connected?");
-    //send a ping to confirm a successful connection
-    let result = await client.db("mandys-db").collection("whatever-collection")
-      .find({}).toArray();
-      console.log(result);
-
-    res.render('mongo', {
-      mongoResult : result
-    });
-
-    })
-    
-
-
 
 app.get('/', function (req, res) {
   // res.send('Hello Node from Express on Local Dev Box')
@@ -77,7 +62,7 @@ app.get('/read', async(req,res)=>{
   console.log(result);
 
   res.render('mongo', {
-    mongoResult: result });
+    postData: result });
   })
 
 app.get('/insert', async(req,res)=>{
@@ -91,22 +76,34 @@ app.get('/insert', async(req,res)=>{
   res.render('insert');
 })
 
-app.post('/update', async(req,res)=> {
+app.post('/update/:id', async (req,res)=>{
 
-  console.log('in /update');
+  console.log("req.parms.id: ", req.params.id)
 
-  let result = await client.db("mandys-db").collection("whatever-collection")
-      .find({}).toArray();
-
-  //connect to db,
-  await client.connect();
-  //
-  await client.db("mandys-db").collection("whatever-collection").findOneAndUpdate(
-    { "post" : "another day " },
-    { $set: {"post": "the next other day" }}
-  );
-  //insert into it
-  res.render('update',  {postData: result});
-
+  client.connect; 
+  const collection = client.db("mandys-db").collection("whatever-collection");
+  let result = await collection.findOneAndUpdate( 
+  {"_id": new ObjectId(req.params.id)}, { $set: {"post": "NEW POST" } }
+)
+.then(result => {
+  console.log(result); 
+  res.redirect('/read');
 })
+}); 
+
+app.post('/delete/:id', async (req,res)=>{
+
+  console.log("req.parms.id: ", req.params.id)
+
+  client.connect; 
+  const collection = client.db("mandys-db").collection("whatever-collection");
+  let result = await collection.findOneAndDelete( 
+  {"_id": new ObjectId(req.params.id)})
+
+.then(result => {
+  console.log(result); 
+  res.redirect('/read');
+})
+});
+
 app.listen(5000)
