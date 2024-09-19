@@ -6,8 +6,7 @@ const bodyParser = require('body-parser')
 const { urlencoded } = require('body-parser')
 const { ObjectId } = require('mongodb')
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = process.env.uri; 
-
+const uri = `mongodb+srv://Mandy:${process.env.MONGO_PWD}@cluster0.ru7jq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0$`;
 app.set('view engine', 'ejs')
 app.use(express.static('./public/'))
 app.use(bodyParser.urlencoded({ extended: true }))
