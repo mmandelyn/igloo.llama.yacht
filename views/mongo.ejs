@@ -10,6 +10,9 @@
   <form method="POST" action="/delete/<%= postData[i]._id %>" style="display: inline-block">  
     <input type="submit" value="delete"> 
   </form>
+  <form method="POST" action="/email/<%= postData[i]._id %>" style="display: inline-block">  
+    <input type="submit" value="email"> 
+  </form>
   <br/>
 <% } %>
 

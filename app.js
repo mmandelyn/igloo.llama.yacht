@@ -50,7 +50,7 @@ app.get('/ejs', (res,req)=>{
   //can you get content from client to console?
 })
 
-app.get('/read', async(req,res)=>{
+app.get('/read', async (req,res)=>{
   console.log('in /read');
   await client.connect();
 
