@@ -1,3 +1,54 @@
-<h1>my ejs page</h1>
-<br>
-<%=myServerVariable %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+</head>
+
+<div class="text-center">
+  <br>
+  <h1>Welcome to the Favorite Name Catalog!</h1>
+  <br><br>
+  <h3>Tell us your name or your favorite one!</h3>
+  <form method="POST" action="/insert">
+    <label for="fname">Enter here:</label>
+    <input type="text" id="fname" name="fname">
+    <button id="goButton" type="submit" class="btn btn-primary" style="background-color: white; border: 1px solid black; color: #E57373">Submit!</button>
+  </form>
+  
+  <p id="userGreeting" style="text-align:center"></p>
+  <br>
+
+  <h3>Name Catalog</h3> 
+    <% for (var i=0; i< postData.length; i++ ) { %>
+      <form method="POST" action="/update" style="display: inline-block">
+        <input type="hidden" name="nameID" value="<%= postData[i]._id %>"> 
+        <input id="inputUpdateName" name="inputUpdateName" value="<%= postData[i].fname %>">   
+          <input type="submit" class="btn btn-secondary btn-sm" value="Update">
+      </form>
+      <form method="POST" action="/delete/<%= postData[i]._id %>" style="display: inline-block">
+        <input type="submit" class="btn btn-outline-danger btn-sm" value="Delete">
+      </form>
+      <br />
+      <% } %>
+  </div>
+
+<!-- scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js'></script>
+  <script  src="scripts/script.js"></script>
+
+  <script>
+    let fname = '<%=postData[(postData.length-1)].fname%>';
+  </script>
+
+</html>
+
+
+
+
