@@ -15,4 +15,5 @@ The Favorite Name Catalog houses all of the favorite names from the users.
 
 ## Milestone and Issue
 [Dev-Mary Milestone](https://github.com/mmandelyn/igloo.llama.yacht/milestone/5)
+
 [Issue 17](https://github.com/mmandelyn/igloo.llama.yacht/issues/17)
