@@ -14,5 +14,5 @@ The Favorite Name Catalog houses all of the favorite names from the users.
 3. They can edit and update any existing names, and even delete it if they don't like it...
 
 ## Milestone and Issue
-[Dev-Mary Milestone] (https://github.com/mmandelyn/igloo.llama.yacht/milestone/5)
-[Issue 17] (https://github.com/mmandelyn/igloo.llama.yacht/issues/17)
+[Dev-Mary Milestone](https://github.com/mmandelyn/igloo.llama.yacht/milestone/5)
+[Issue 17](https://github.com/mmandelyn/igloo.llama.yacht/issues/17)
